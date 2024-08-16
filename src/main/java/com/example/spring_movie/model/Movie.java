@@ -1,4 +1,4 @@
-package com.example.spring_book.model;
+package com.example.spring_movie.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

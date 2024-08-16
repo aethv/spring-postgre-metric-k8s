@@ -1,4 +1,4 @@
-package com.example.spring_book.controller.dto;
+package com.example.spring_movie.controller.dto;
 
 public record MovieResponse (
         String imdbId,

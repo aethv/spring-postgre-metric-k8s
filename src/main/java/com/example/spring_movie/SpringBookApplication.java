@@ -1,4 +1,4 @@
-package com.example.spring_book;
+package com.example.spring_movie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

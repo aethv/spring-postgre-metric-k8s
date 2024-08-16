@@ -1,8 +1,8 @@
-package com.example.spring_book.service;
+package com.example.spring_movie.service;
 
-import com.example.spring_book.exception.NotFoundException;
-import com.example.spring_book.model.Movie;
-import com.example.spring_book.repository.MovieRepository;
+import com.example.spring_movie.exception.NotFoundException;
+import com.example.spring_movie.model.Movie;
+import com.example.spring_movie.repository.MovieRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

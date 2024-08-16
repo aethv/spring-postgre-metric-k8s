@@ -1,4 +1,4 @@
-package com.example.spring_book.controller.dto;
+package com.example.spring_movie.controller.dto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

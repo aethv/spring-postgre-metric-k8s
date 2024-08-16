@@ -1,9 +1,9 @@
-package com.example.spring_book.mapper;
+package com.example.spring_movie.mapper;
 
-import com.example.spring_book.controller.dto.CreateMovieRequest;
-import com.example.spring_book.controller.dto.MovieResponse;
-import com.example.spring_book.controller.dto.UpdateMovieRequest;
-import com.example.spring_book.model.Movie;
+import com.example.spring_movie.controller.dto.CreateMovieRequest;
+import com.example.spring_movie.controller.dto.MovieResponse;
+import com.example.spring_movie.controller.dto.UpdateMovieRequest;
+import com.example.spring_movie.model.Movie;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;

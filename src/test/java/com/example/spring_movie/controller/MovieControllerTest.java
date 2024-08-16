@@ -1,11 +1,11 @@
-package com.example.spring_book.controller;
+package com.example.spring_movie.controller;
 
-import com.example.spring_book.controller.dto.CreateMovieRequest;
-import com.example.spring_book.controller.dto.UpdateMovieRequest;
-import com.example.spring_book.exception.NotFoundException;
-import com.example.spring_book.mapper.MovieMapperImpl;
-import com.example.spring_book.model.Movie;
-import com.example.spring_book.service.MovieService;
+import com.example.spring_movie.controller.dto.CreateMovieRequest;
+import com.example.spring_movie.controller.dto.UpdateMovieRequest;
+import com.example.spring_movie.exception.NotFoundException;
+import com.example.spring_movie.mapper.MovieMapperImpl;
+import com.example.spring_movie.model.Movie;
+import com.example.spring_movie.service.MovieService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

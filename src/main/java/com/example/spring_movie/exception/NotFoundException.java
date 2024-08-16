@@ -1,4 +1,4 @@
-package com.example.spring_book.exception;
+package com.example.spring_movie.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
