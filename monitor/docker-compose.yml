@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+
+  postgres:
+    image: postgres:16.1
+    container_name: postgres-monitor
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=moviesdb
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    healthcheck:
+      test: "pg_isready -U postgres"
+
+  prometheus:
+    image: prom/prometheus:v2.47.1
+    container_name: prometheus-monitor
+    restart: unless-stopped
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9090" ]
+
+  grafana:
+    image: grafana/grafana:9.5.12
+    container_name: grafana-monitor
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "3000" ]

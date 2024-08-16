@@ -1,5 +1,6 @@
 package com.example.spring_movie.controller;
 
+import com.example.spring_movie.config.CachingConfig;
 import com.example.spring_movie.controller.dto.CreateMovieRequest;
 import com.example.spring_movie.controller.dto.MovieResponse;
 import com.example.spring_movie.controller.dto.UpdateMovieRequest;
@@ -8,6 +9,9 @@ import com.example.spring_movie.model.Movie;
 import com.example.spring_movie.service.MovieService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,12 +33,14 @@ public class MovieController {
                 .toList();
     }
 
+    @Cacheable(cacheNames = CachingConfig.MOVIES, key = "#imdbId")
     @GetMapping("/{imdbId}")
     public MovieResponse getMovie(@PathVariable String imdbId) {
         Movie movie = movieService.validateAndGetMovieById(imdbId);
         return movieMapper.toMovieResponse(movie);
     }
 
+    @CachePut(cacheNames = CachingConfig.MOVIES, key = "#result.imdbId")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public MovieResponse createMovie(@Valid @RequestBody CreateMovieRequest createMovieRequest) {
@@ -42,6 +48,7 @@ public class MovieController {
         return movieMapper.toMovieResponse(movie);
     }
 
+    @CachePut(cacheNames = CachingConfig.MOVIES, key = "#imdbId")
     @PatchMapping("/{imdbId}")
     public MovieResponse updateMovie(@PathVariable String imdbId, @RequestBody UpdateMovieRequest updateMovieRequest) {
         Movie movie = movieService.validateAndGetMovieById(imdbId);
@@ -50,6 +57,7 @@ public class MovieController {
         return movieMapper.toMovieResponse(movie);
     }
 
+    @CacheEvict(cacheNames = CachingConfig.MOVIES, key = "#imdbId")
     @DeleteMapping("/{imdbId}")
     public void deleteMovie(@PathVariable String imdbId) {
         Movie movie = movieService.validateAndGetMovieById(imdbId);
