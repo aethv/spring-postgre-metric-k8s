@@ -16,12 +16,12 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/movies")
-public class BookController {
+public class MovieController {
 
     private final MovieService movieService;
     private final MovieMapper movieMapper;
 
-    @GetMapping("/")
+    @GetMapping
     public List<MovieResponse> getMovies() {
         return movieService.getMovies()
                 .stream()
